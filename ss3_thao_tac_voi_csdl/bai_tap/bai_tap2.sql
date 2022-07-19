@@ -77,7 +77,7 @@ FROM
     Product p ON p.product_id = od.product_id;
 
 SELECT 
-    c.customer_name, o.order_date
+    c.customer_name, o.order_date, c.customer_id
 FROM
     Customer c
         LEFT JOIN
@@ -98,6 +98,5 @@ FROM
     OrderDetail od ON od.order_id = o.order_id
         JOIN
     Product p ON p.product_id = od.product_id
-GROUP BY od.order_id
-;
+GROUP BY od.order_id;
 

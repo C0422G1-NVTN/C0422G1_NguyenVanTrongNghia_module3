@@ -25,6 +25,12 @@
             display: flex;
             justify-content: space-around;
             background-color: antiquewhite;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .content {
+            margin: 100px 25px;
         }
     </style>
 </head>
@@ -32,14 +38,14 @@
 <h1>Trang đọc truyện ngắn</h1>
 <nav>
     <ul>
-        <li><a href="http://localhost:63342/module_3/C0422G1_NguyenVanTrongNghia_module3/ss6_css/bai_tap/bai_tap3_tao_trang_doc_truyen_ngan.html?_ijt=q2ks1842dsuh9ctmde7nc8lim1">Trang chủ</a></li>
-        <li>Giới thiệu</li>
-        <li>Tin tức</li>
+        <li><a href="#naruto">Truyen1</a></li>
+        <li><a href="#one-piece">Truyen2</a></li>
+        <li><a href="#dragon-ball">Truyen3</a></li>
     </ul>
 </nav>
 
 <div>
-    <div>
+    <div class="content" id="naruto">
         <h5><a href="http://www.truyentranhmau.com/naruto/1991-chap-100-0"> <img class="pic1" src="https://upload.wikimedia.org/wikipedia/vi/3/3e/Naruto_01_m.jpg"></a>
         <button><a href="http://www.truyentranhmau.com/naruto/1991-chap-100-0">Naruto</a></button>
         </h5>
@@ -51,7 +57,7 @@
             (Thi Quỷ Phong Tận - một thuật cấm phải đánh đổi bằng tính mạng). Hokage Đệ Tứ, người được vinh danh vì đã phong ấn con yêu hồ,
             khi nhắm mắt xuôi tay đã mong muốn Naruto được người dân tôn trọng khi có thân xác là nơi chứa đựng con quái vật.</p>
     </div>
-    <div>
+    <div class="content" id="one-piece">
         <h5><a href="http://truyenqqpro.com/truyen-tranh/dao-hai-tac-128-chap-1000.html"> <img class="pic1" src="https://otakugo.net/wp-content/uploads/2021/09/onepiece-2-585x881-1.jpg"></a>
             <button><a href="http://truyenqqpro.com/truyen-tranh/dao-hai-tac-128-chap-1000.html">One Piece</a></button>
         </h5>
@@ -62,7 +68,7 @@
             một đầu bếp. Họ có được một con tàu tên là Going Merry(ゴイング メリー) và đối đầu với những băng hải tặc khét tiếng của East Blue. Khi Luffy
             và đồng đội của cậu bắt đầu cuộc phiêu lưu của, những người khác tham gia vào băng sau đó trong bộ truyện.</p>
     </div>
-    <div>
+    <div class="content" id="dragon-ball">
         <h5><a href="https://dragonballwiki.net/doctruyen/dragon-ball-super/chap-53-5.html"> <img class="pic1" src="https://upload.wikimedia.org/wikipedia/vi/thumb/1/17/Goku-kid1.png/200px-Goku-kid1.png"></a>
             <button><a href="https://dragonballwiki.net/doctruyen/dragon-ball-super/chap-53-5.html">Dragon Ball</a></button>
         </h5>

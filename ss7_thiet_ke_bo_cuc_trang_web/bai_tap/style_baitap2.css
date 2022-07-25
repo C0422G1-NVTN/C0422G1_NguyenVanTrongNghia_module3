@@ -89,6 +89,9 @@ width: 40px;
 .right-content a img {
     width: 100%;
 }
-#div1 {
-    display: block;
+.center-content {
+    margin-top: 80px;
+}
+section {
+    border: black 2px;
 }

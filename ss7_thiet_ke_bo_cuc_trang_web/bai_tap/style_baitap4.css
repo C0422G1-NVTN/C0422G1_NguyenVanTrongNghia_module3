@@ -213,6 +213,7 @@ nav {
 aside {
     border: 1px solid black;
     min-height: 400px;
+    background-color: dimgray;
 }
 
 aside li {
@@ -223,6 +224,8 @@ aside li {
 
 article {
     min-height: 400px;
+    background-color: dimgray;
+    margin-top: 30px;
 }
 
 nav li {

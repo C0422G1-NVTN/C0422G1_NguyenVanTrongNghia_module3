@@ -11,13 +11,13 @@
     <title>$Title$</title>
   </head>
   <body>
-  <h2>Currency Converter</h2>
+  <h2>Product Discount Calculator</h2>
   <form method="post" action="/discount">
-    <label>Rate: </label><br/>
+    <label>Product: </label><br/>
     <input type="text" name="ProductDescription" placeholder="TEXT" value="0"/><br/>
-    <label>USD: </label><br/>
+    <label>List Price: </label><br/>
     <input type="number" name="ListPrice" placeholder="VND" value="0"/><br/>
-    <label>USD: </label><br/>
+    <label>Discount Percent: </label><br/>
     <input type="number" name="DiscountPercent" placeholder="RATE" value="0"/><br/>
     <input type = "submit" id = "submit" value = "Converter"/>
   </form>

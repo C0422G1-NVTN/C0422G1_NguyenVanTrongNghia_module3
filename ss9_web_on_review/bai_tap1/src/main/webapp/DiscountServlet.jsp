@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<p>${discountAmount}</p>
-<p>${discountPrice}</p>
+<p>Lượng chiết khấu${discountAmount}</p>
+<p>Giá sau khi đã được chiết khấu${discountPrice}</p>
 </body>
 </html>

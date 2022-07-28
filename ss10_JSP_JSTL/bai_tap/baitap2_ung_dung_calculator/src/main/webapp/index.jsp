@@ -6,43 +6,32 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-  <h1>Simple Calculator</h1>
-  <form method="post" action="/calculate">
-    <fieldset>
-      <legend>Calculator</legend>
-      <table>
-        <tr>
-          <td>First operand: </td>
-          <td><input name="first-operand" type="text"/></td>
-        </tr>
-        <tr>
-          <td>Operator: </td>
-          <td>
-            <select name="operator">
-              <option value="+">Addition</option>
-              <option value="-">Subtraction</option>
-              <option value="*">Multiplication</option>
-              <option value="/">Division</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Second operand: </td>
-          <td><input name="second-operand" type="text"/></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><input type="submit" value="Calculate"/></td>
-        </tr>
-      </table>
-    </fieldset>
-  </form>
-  </body>
+</head>
+<body>
+<h2>Simple Calculator</h2>
+<form action="/CalculatorServlet" method="post">
+    <label>First Number: </label><br/>
+    <input type="number" name="firstNumber" placeholder="Input First Number"/><br/>
+
+        <div>
+        <label>Input Operator</label>
+        <select name="operator">
+            <option value="+">addition</option>
+            <option value="-">subtraction</option>
+            <option value="*">multiplication</option>
+            <option value="/">division</option>
+        </select>
+    </div>
+
+
+    <label>Second Number: </label><br/>
+    <input type="number" name="secondNumber" placeholder="Input Second Number"/><br/>
+
+    <input type="submit" id="submit" value="Converter"/>
+</form>
+</body>
 </html>

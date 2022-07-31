@@ -1,11 +1,12 @@
-package repository;
+package repository.impl;
 
 import model.Product;
+import repository.IProductRepository;
 
 
 import java.util.*;
 
-public class ProductRepositoryImpl implements ProductRepository {
+public class ProductRepository implements IProductRepository {
     private static Map<Integer, Product> productMap;
 
     static {

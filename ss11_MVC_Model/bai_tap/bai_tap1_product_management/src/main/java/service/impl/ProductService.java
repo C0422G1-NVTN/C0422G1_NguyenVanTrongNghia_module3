@@ -1,12 +1,13 @@
-package service;
+package service.impl;
 
 import model.Product;
-import repository.ProductRepositoryImpl;
+import repository.impl.ProductRepository;
+import service.IProductService;
 
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService {
-    ProductRepositoryImpl productRepository = new ProductRepositoryImpl();
+public class ProductService implements IProductService {
+    ProductRepository productRepository = new ProductRepository();
 
 
     @Override

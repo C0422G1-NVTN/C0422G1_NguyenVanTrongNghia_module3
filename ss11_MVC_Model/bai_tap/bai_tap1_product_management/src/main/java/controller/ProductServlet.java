@@ -1,8 +1,8 @@
 package controller;
 
 import model.Product;
-import service.ProductService;
-import service.ProductServiceImpl;
+import service.IProductService;
+import service.impl.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
-    private ProductService productService = new ProductServiceImpl();
+    private IProductService productService = new ProductService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -133,7 +133,7 @@ public class ProductServlet extends HttpServlet {
         List<Product> products = productService.findByName(search);
         request.setAttribute("products",products);
         try {
-            request.getRequestDispatcher("view/product/search.jsp").forward(request,response);
+            request.getRequestDispatcher("view/product/list.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

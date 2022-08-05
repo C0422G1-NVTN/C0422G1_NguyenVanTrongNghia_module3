@@ -10,8 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="common/bootstrap-5.0.2-dist/css/bootstrap.css">
-    <script src="common/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../common/css/bootstrap.css">
     <style>
         #bg-img1 {
             background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-abstract-watercolor-background_23-2149018550.jpg?w=2000);
@@ -78,64 +77,53 @@
         </div>
     </div>
 </nav>
-<div class="col-lg-12 d-flex" id="bg-img1">
-    <div class="col-lg-2 border bg-success">
-        <ul>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-            <li>Item One</li>
-            <li>Item Two</li>
-            <li>Item Three</li>
-        </ul>
-    </div>
-    <div class="col-lg-1"></div>
-    <!--    Table-->
-    <div class="col-lg-9"></div>
-</div>
-<div class="d-flex justify-content-center align-items-center">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img size="50%" src="https://resortdanang.info/wp-content/uploads/2018/11/furama-da-nang.jpg" class="d-block w-100"
-                     alt="...">
-            </div>
-            <div class="carousel-item">
-                <img size="50%" src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-                     class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img size="50%" src="https://www.tapchikientruc.com.vn/wp-content/uploads/2021/01/21A01032-3.jpg"
-                     class="d-block w-100" alt="...">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://pix6.agoda.net/hotelImages/109/10953/10953_16030216470040397599.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="http://thuevilla.com/wp-content/uploads/2018/10/Furama-Resort-Danang-800x600.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://media.baodautu.vn/Images/phongvien/2016/05/24/giao-luu1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <h2>KHU NGHỈ DƯỠNG ĐẲNG CẤP THẾ GIỚI, FURAMA ĐÀ NẴNG, NỔI TIẾNG LÀ KHU NGHỈ DƯỠNG ẨM THỰC TẠI VIỆT NAM.</h2>
+            </div>
+            <div class="col-lg-4">
+                <iframe width="450" height="300" src="https://www.youtube.com/embed/k7Ui01pVryo"
+                        title="Furama Resort Danang | A New MICE and Wedding Destination For Indian" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-4">
+                <p>Hướng ra bãi biển Đà Nẵng trải dài cát trắng, Furama Resort Đà Nẵng là cửa ngõ đến với 3 di sản văn hoá
+                    thế giới: Hội An (20 phút), Mỹ Sơn (90 phút) và Huế (2 tiếng. 196 phòng hạng sang cùng với 70 căn biệt
+                    thự từ hai đến bốn phòng ngủ có hồ bơi riêng đều được trang trí trang nhã, theo phong cách thiết kế
+                    truyền thống của Việt Nam và kiến trúc thuộc địa của Pháp, biến Furama thành khu nghỉ dưỡng danh giá
+                    nhất tại Việt Nam – vinh dự được đón tiếp nhiều người nổi tiếng, giới hoàng gia, chính khách, ngôi sao
+                    điện ảnh và các nhà lãnh đạo kinh doanh quốc tế.
+                </p>
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+
+
 
 <footer class="text-center text-white" style="background: #f1f1f1;">
     <!-- Grid container -->
@@ -206,7 +194,7 @@
     </div>
     <!-- Copyright -->
 </footer>
+<script src="common/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/d6e19ea644.js" crossorigin="anonymous"></script>
-
 </body>
 </html>

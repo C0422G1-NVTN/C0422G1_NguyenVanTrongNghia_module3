@@ -10,7 +10,8 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="common/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../common/css/bootstrap.css">
+    <script src="../common/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
         <nav class="navbar navbar-light bg-light container-fluid">
             <div class="col-lg-12 d-flex justify-content-between">
                 <div class="col-lg-2">
-                    <a class="navbar-brand justify-content-start" href="#">
+                    <a class="navbar-brand justify-content-start" href="/ServicesServlet?action=home">
                         <img src="https://cdn.nhanlucnganhluat.vn/uploads/images/051D288B/logo/2018-12/Logo-FURAMA-RESORT.jpg"
                              alt="" width="80" height="90">
                     </a>
@@ -97,7 +98,7 @@
                     <td>1 Day</td>
                     <td class=" justify-content-center bg-secondary">
                         <a class="btn btn-success text-white text-decoration-none  d-flex justify-content-center"
-                           href="#">Edit</a>
+                           href="/furama?action=edit">Edit</a>
                     </td>
                     <td class=" justify-content-center bg-secondary">
                         <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal"
@@ -115,7 +116,7 @@
                                         Có muốn xóa không
                                     </div>
                                     <div class="modal-footer">
-                                        <a class="btn btn-danger" href="/users?action=delete&id=${user.id}">Delete</a>
+                                        <a class="btn btn-danger" href="/furama?action=delete&id=${user.id}">Delete</a>
 
                                         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
                                     </div>
@@ -132,7 +133,7 @@
 
     </div>
 </div>
-<div class="btn btn-success"><a class="text-decoration-none text-white" href="#">Add new service</a></div>
+<div class="btn btn-success"><a class="text-decoration-none text-white" href="/furama?action=create">Add new service</a></div>
 <footer class="text-center text-white" style="background: #f1f1f1;">
     <!-- Grid container -->
     <div class="container pt-4">
@@ -202,8 +203,8 @@
     </div>
     <!-- Copyright -->
 </footer>
+
 <script src="https://kit.fontawesome.com/d6e19ea644.js" crossorigin="anonymous"></script>
 
-<script src="common/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

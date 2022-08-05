@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="common/bootstrap-5.0.2-dist/css/bootstrap.css">
-    <script src="common/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../common/css/bootstrap.css">
+    <script src="../common/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -73,105 +73,111 @@
     </div>
 </nav>
 
-<center>
-    <h1>User Management</h1>
-    <h2>
-        <a href="users?action=users">List All Users</a>
-    </h2>
-</center>
-<div align="center">
-    <form method="post">
-        <table class="d-flex justify-content-center align-items-center" border="1" cellpadding="5">
-            <tr>
-                <th>Service Name:</th>
-                <td>
-                    <select class="form-select-lg" onchange="showServiceInput(this)">
-                        <option value="None">Chọn loại dịch vụ</option>
-                        <option value="Villa">Villa</option>
-                        <option value="House">House</option>
-                        <option value="Room">Room</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Name:</th>
-                <td>
-                    <input class="form-control" type="text" name="name" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Area:</th>
-                <td>
-                    <input class="form-control" type="text" name="area" size="45"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Cost:</th>
-                <td>
-                    <input class="form-control" type="text" name="cost" size="15"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Max People:</th>
-                <td>
-                    <input class="form-control" type="text" name="maxPeople" size="15"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Rent Type Id:</th>
-                <td>
-                    <input class="form-control" type="text" name="type" size="15"/>
-                </td>
-            </tr>
+<h1>New Form Service</h1>
+<h2>
+    <a href="/ServicesServlet?action=listfurama">List All Users</a>
+</h2>
 
-            <tr id="s1">
-                <th>Tiêu chuẩn phòng:</th>
-                <td>
-                    <input class="form-control" type="text" name="standard_room" size="15"/>
-                </td>
-            </tr>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 bg-success border-success d-flex justify-content-center align-content-center">
+                <form method="post">
+                    <table class="form-control-lg">
+                        <tr>
 
-            <tr id="s2">
-                <th>Mô tả tiện nghi khác:</th>
-                <td>
-                    <input class="form-control" type="text" name="description_other_convenience" size="15"/>
-                </td>
-            </tr>
+                            <td><label>Service Name:</label>
+                                <select class="form-select-lg" onchange="showServiceInput(this.value)">
+                                    <option value="None">Chọn loại dịch vụ</option>
+                                    <option value="Villa">Villa</option>
+                                    <option value="House">House</option>
+                                    <option value="Room">Room</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
 
-            <tr id="s3">
-                <th>Diện tích hồ bơi:</th>
-                <td>
-                    <input class="form-control" type="text" name="pool_area" size="15"/>
-                </td>
-            </tr>
+                            <td><label>Name:</label>
+                                <input class="form-control" type="text" name="name" size="45"/>
+                            </td>
+                        </tr>
+                        <tr>
 
-            <tr id="s4">
-                <th>Số tầng:</th>
-                <td>
-                    <input class="form-control" type="text" name="number_floor" size="15"/>
-                </td>
-            </tr>
+                            <td><label>Area:</label>
+                                <input class="form-control" type="text" name="area" size="45"/>
+                            </td>
+                        </tr>
+                        <tr>
 
-            <tr id="s5">
-                <th>Dịch vụ miễn phí đi kèm:</th>
-                <td>
-                    <input class="form-control" type="text" name="facility_free" size="15"/>
-                </td>
-            </tr>
+                            <td><label>Cost:</label>
+                                <input class="form-control" type="text" name="cost" size="15"/>
+                            </td>
+                        </tr>
+                        <tr>
 
-            <tr>
-                <td colspan="2" align="center">
-                    <input class="form-control" type="submit" value="Save"/>
-                </td>
-            </tr>
+                            <td><label>Max People:</label>
+                                <input class="form-control" type="text" name="maxPeople" size="15"/>
+                            </td>
+                        </tr>
+                        <tr>
 
-        </table>
-    </form>
+                            <td><label>Rent Type Id:</label>
+                                <input class="form-control" type="text" name="type" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr id="s1" style="display: none">
+
+                            <td><label>Tiêu chuẩn phòng:</label>
+                                <input class="form-control" type="text" name="standard_room" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr id="s2" style="display: none"  >
+
+                            <td><label>Mô tả tiện nghi khác:</label>
+                                <input class="form-control" type="text" name="description_other_convenience" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr id="s3" style="display: none">
+
+                            <td><label>Diện tích hồ bơi:</label>
+                                <input class="form-control" type="text" name="pool_area" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr id="s4" style="display: none">
+
+                            <td><label>Số tầng:</label>
+                                <input class="form-control" type="text" name="number_floor" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr id="s5" style="display: none">
+
+                            <td><label>Dịch vụ miễn phí đi kèm:</label>
+                                <input class="form-control" type="text" name="facility_free" size="15"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input class="form-control" type="submit" value="Save"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script>
     function showServiceInput(value) {
-        var v = value.value;
-        switch (v) {
+
+        switch (value) {
             case "None":
                 document.getElementById("s1").style.display = "none";
                 document.getElementById("s2").style.display = "none";
@@ -180,16 +186,16 @@
                 document.getElementById("s5").style.display = "none";
                 break;
             case "Villa":
-                document.getElementById("s1").style.display = "block";
-                document.getElementById("s2").style.display = "block";
-                document.getElementById("s3").style.display = "block";
-                document.getElementById("s4").style.display = "block";
+                document.getElementById("s1").style.display = "table-row";
+                document.getElementById("s2").style.display = "table-row";
+                document.getElementById("s3").style.display = "table-row";
+                document.getElementById("s4").style.display = "table-row";
                 document.getElementById("s5").style.display = "none";
                 break;
             case "House":
-                document.getElementById("s1").style.display = "block";
-                document.getElementById("s2").style.display = "block";
-                document.getElementById("s3").style.display = "block";
+                document.getElementById("s1").style.display = "table-row";
+                document.getElementById("s2").style.display = "table-row";
+                document.getElementById("s3").style.display = "table-row";
                 document.getElementById("s4").style.display = "none";
                 document.getElementById("s5").style.display = "none";
                 break;
@@ -198,12 +204,14 @@
                 document.getElementById("s2").style.display = "none";
                 document.getElementById("s3").style.display = "none";
                 document.getElementById("s4").style.display = "none";
-                document.getElementById("s5").style.display = "block";
+                document.getElementById("s5").style.display = "table-row";
                 break;
 
         }
     }
 </script>
+
+
 <footer class="text-center text-white" style="background: #f1f1f1;">
     <!-- Grid container -->
     <div class="container pt-4">

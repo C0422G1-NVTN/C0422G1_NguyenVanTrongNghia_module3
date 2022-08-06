@@ -13,8 +13,8 @@
     <script src="../common/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="col-md-5 bg-light mt-5 p-3" style="margin: auto">
-    <h3>Create Contract</h3>
+<div class="col-md-5 bg-success mt-5 p-3" style="margin: auto">
+    <h3>Edit Contract</h3>
     <form action="/furuma?action=editContract" method="post">
         <div class="mb-3 row">
             <label for="contract-id" class="col-sm-4 col-form-label">Id</label>
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div>
-            <button class="btn btn-danger" type="button" onclick="location.href='/furuma?action=listContract'">Cancel</button>
+            <button class="btn btn-danger" type="button" onclick="location.href='/furama?action=listContract'">Cancel</button>
             <button class="btn btn-success" type="submit">Edit</button>
         </div>
     </form>

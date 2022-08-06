@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: PC
-  Date: 05/08/22
-  Time: 10:10 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="#" class="btn btn-success">Add new customer</a>
+            <a href="/furama?action=createCustomer" class="btn btn-success">Add new customer</a>
         </div>
     </div>
 </div>
@@ -30,37 +25,36 @@
             <table class="table">
                 <thead>
                 <tr class="table-dark">
-                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">type id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Birthday</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Identify Card</th>
                     <th scope="col">Phone Number</th>
                     <th scope="col">Email </th>
-                    <th scope="col">Customer Type</th>
                     <th scope="col">Address </th>
                     <th scope="col" colspan="2" style="text-align: center">Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="table-light">
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                <c:forEach var="customer" items="${listCustomer}">
+                    <tr class="table-light">
+                    <td>${customer.id}</td>
+                    <td>${customer.typeCustomerId}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.dateOfBirth}</td>
+                    <td>${customer.gender}</td>
+                    <td>${customer.idCard}</td>
+                    <td>${customer.phoneNumber}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.address}</td>
                     <td>
                         <!-- Button trigger modal -->
                         <button type="button"
                                 class="btn"
                                 data-bs-toggle="modal"
-                                data-bs-target="#editButton">
-                            <img src="/img/edit-2.png"
-                                 style="height: 25px;width: auto">
+                                data-bs-target="#editButton" onclick="location.href='furama?action=editCustomer'">
+                            Edit
                         </button>
                     </td>
                     <td class="btn-delete">
@@ -69,12 +63,11 @@
                                 class="btn"
                                 data-bs-toggle="modal"
                                 data-bs-target="#deleteButton">
-                            <img src="/img/delete.png"
-                                 style="height: 25px;width: auto">
+                            Delete
                         </button>
                     </td>
                 </tr>
-                </tbody>
+                </c:forEach>
             </table>
         </div>
     </div>
@@ -94,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger bg-danger">Delete</button>
             </div>
         </div>
     </div>

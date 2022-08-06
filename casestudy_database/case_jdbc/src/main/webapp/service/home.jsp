@@ -67,7 +67,7 @@
                     <a class="nav-link active" aria-current="page" href="/furama?action=listService">Service</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/furama">Contract</a>
+                    <a class="nav-link active" aria-current="page" href="/furama?action=listContract">Contract</a>
                 </li>
             </ul>
             <form class="d-flex">

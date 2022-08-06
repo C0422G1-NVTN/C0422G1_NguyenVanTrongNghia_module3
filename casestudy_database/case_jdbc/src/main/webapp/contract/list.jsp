@@ -17,7 +17,7 @@
 <div class="sticky-top row">
     <nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="/furuma">
+            <a class="navbar-brand text-light" href="/furama">
                 <i class="fa-solid fa-house-chimney fs-4 text"></i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,15 +26,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/furuma">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/furama">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Employee
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/furuma?action=listEmployee">List Employee</a></li>
-                            <li><a class="dropdown-item" href="/furuma?action=createEmployee">Add new Employee</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=listEmployee">List Employee</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=createEmployee">Add new Employee</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,8 +42,8 @@
                             Customer
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/furuma?action=listCustomer">List Customer</a></li>
-                            <li><a class="dropdown-item" href="/furuma?action=createCustomer">Add new Customer</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=listCustomer">List Customer</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=createCustomer">Add new Customer</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,8 +51,8 @@
                             Service
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/furuma?action=listService">List Service</a></li>
-                            <li><a class="dropdown-item" href="/furuma?action=createService">Add new Service</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=listService">List Service</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=createService">Add new Service</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -60,8 +60,8 @@
                             Contract
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/furuma?action=listContract">List Contract</a></li>
-                            <li><a class="dropdown-item" href="/furuma?action=createContract">Add new Contract</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=listContract">List Contract</a></li>
+                            <li><a class="dropdown-item" href="/furama?action=createContract">Add new Contract</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -99,12 +99,12 @@
             <td>1400</td>
             <td>2 xe máy</td>
             <td>
-                <button type="button" class="dropdown-item btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-modal" onclick="location.href='/furuma?action=edit_contract'">
+                <button type="button" class="btn btn-success" data-bs-target="#edit-modal" onclick="location.href='/furama?action=editContract'">
                     Edit
                 </button>
             </td>
             <td>
-                <button type="button" class="dropdown-item btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="removeFacility(${con.id})">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="removeFacility(${con.id})">
                     Delete
                 </button>
             </td>

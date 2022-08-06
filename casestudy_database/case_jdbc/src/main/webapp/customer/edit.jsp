@@ -9,17 +9,12 @@
 <html>
 <head>
   <title>Edit Customer</title>
-  <link rel="stylesheet" href="/bootstrap-5.1.3-dist/css/bootstrap.css">
-  <link rel="stylesheet" href="/bootstrap-5.1.3-dist/my_style/my_style.css">
+  <link rel="stylesheet" href="../common/css/bootstrap.css">
+  <script src="../common/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<%--header--%>
-<%--<%@ include file = "../layout/header.jsp" %>--%>
 
-
-<%--nav bar--%>
-<%--<%@ include file = "../layout/navbar.jsp" %>--%>
 
 
 <div class="container d-flex justify-content-md-center mb-5" style="margin-top: 20px">

@@ -92,7 +92,7 @@
         <tr>
             <td>1</td>
             <td>Room twin 01</td>
-            <td>Lê Hồng Sơn</td>
+            <td>Lê Hồng Nghĩa</td>
             <td>09/01/2022</td>
             <td>09/02/2022</td>
             <td>1200</td>

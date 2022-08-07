@@ -88,7 +88,14 @@
             <div class="mb-3 row">
                 <label for="inputTypeId" class="col-sm-4 col-form-label">Type id</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputTypeId" name="typeCustomerId">
+<%--                    <input type="text" class="form-control" id="inputTypeId" name="typeCustomerId">--%>
+    <select class="form-control" name="typeCustomerId" id="inputTypeId">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+    </select>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -146,7 +153,7 @@
             </div>
             <div>
                 <button class="btn btn-danger" type="button" onclick="location.href='/furama?action=listCustomer'">Cancel</button>
-                <button class="btn btn-success" type="submit">Create</button>
+                <button class="btn btn-success" type="submit">Add</button>
             </div>
         </form>
         <c:if test="${message != null}">

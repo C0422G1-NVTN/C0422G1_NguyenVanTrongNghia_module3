@@ -42,4 +42,32 @@ SET FOREIGN_KEY_CHECKS=1;
 END //
 DELIMITER ;
 
-call delete_customer(1);
+DELIMITER //
+CREATE PROCEDURE insert_new_customer(
+					 IN id INT,
+					 IN type_id INT,
+                     IN name VARCHAR(45),
+                     IN date_of_birth DATE,
+                     IN gender BIT(1),
+                     IN id_card VARCHAR(45),
+                     IN phone_number VARCHAR(45),
+                     IN email VARCHAR(45),
+                     IN address VARCHAR(45))
+BEGIN
+INSERT INTO khach_hang 
+VALUES (id, type_id, name, date_of_birth, gender, id_card, phone_number, email, address);
+END //                     
+DELIMITER ;
+
+call insert_new_customer(15,2,"Nghia","1992-08-08",1,324234234,23131313,"nghianf@gmail.com","12 Bang Lang 3");
+
+DELIMITER //
+create PROCEDURE find_customer_by_id(in customer_id int)
+BEGIN
+select *
+from khach_hang kh 
+where kh.ma_khach_hang = customer_id;
+END //
+DELIMITER ;
+
+call find

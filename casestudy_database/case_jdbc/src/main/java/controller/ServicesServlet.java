@@ -1,18 +1,21 @@
 package controller;
 
 import model.Customer.Customer;
-import service.impl.FuramaService;
+import model.Facility.Facility;
+import repository.facility.impl.FacilityRepository;
+import service.customer.impl.FuramaService;
+import service.facility.FacilityService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ServicesServlet", value = "/furama")
 public class ServicesServlet extends HttpServlet {
     FuramaService furamaService = new FuramaService();
+    FacilityService facilityService = new FacilityService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,8 +24,8 @@ public class ServicesServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "listService":
-                showListService(request, response);
+            case "listFacility":
+                showListFacility(request, response);
                 break;
             case "listCustomer":
                 showListCustomer(request, response);
@@ -33,8 +36,8 @@ public class ServicesServlet extends HttpServlet {
             case "listContract":
                 showListContract(request, response);
                 break;
-            case "createService":
-                showNewServiceForm(request, response);
+            case "createFacility":
+                showNewFacilityForm(request, response);
                 break;
             case "createCustomer":
                 showNewCustomerForm(request, response);
@@ -48,7 +51,7 @@ public class ServicesServlet extends HttpServlet {
             case "editService":
                 showEditServiceForm(request, response);
                 break;
-            case "editCustomer":
+            case "showEditCustomer":
                 showEditCustomerForm(request, response);
                 break;
             case "editEmployee":
@@ -107,15 +110,19 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void showEditCustomerForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer existingCustomer = furamaService.findCustomerById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        request.setAttribute("cus", existingCustomer);
         try {
-            requestDispatcher.forward(request, response);
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     private void showNewEmployeeForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/create.jsp");
@@ -163,8 +170,10 @@ public class ServicesServlet extends HttpServlet {
         }
     }
 
-    private void showListService(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service/list.jsp");
+    private void showListFacility(HttpServletRequest request, HttpServletResponse response) {
+        List<Facility> facilityList = facilityService.findAllFacility();
+        request.setAttribute("listFacility",facilityList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/list.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -175,7 +184,7 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void showHome(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service/home.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/home.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -196,8 +205,8 @@ public class ServicesServlet extends HttpServlet {
         }
     }
 
-    private void showNewServiceForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service/add.jsp");
+    private void showNewFacilityForm(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/add.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -216,6 +225,55 @@ public class ServicesServlet extends HttpServlet {
         switch (action) {
             case "createCustomer":
                 addNewCustomer(request, response);
+                break;
+            case "editCustomer":
+                editCustomer(request,response);
+                break;
+            case "deleteCustomer":
+                deleteCustomer(request,response);
+        }
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        furamaService.deleteCustomerById(id);
+        List<Customer> customerList = furamaService.displayAllCustomer();
+        request.setAttribute("customer", customerList);
+        RequestDispatcher rq = request.getRequestDispatcher("customer/list.jsp");
+        try {
+            rq.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int typeCustomerId = Integer.parseInt(request.getParameter("typeCustomerId"));
+        String name = request.getParameter("name");
+        String dateOfBirth = request.getParameter("dateOfBirth");
+        int gender = Integer.parseInt(request.getParameter("gender"));
+        String idCard = request.getParameter("idCard");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer customer = new Customer(id, typeCustomerId, name, dateOfBirth, gender, idCard, phone, email, address);
+        boolean flag = furamaService.editCustomerById(id, customer);
+
+        if (flag){
+            request.setAttribute("message", "edit success");
+        }else {
+            request.setAttribute("message", "edit error");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -230,7 +288,12 @@ public class ServicesServlet extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         Customer customer = new Customer(id,typeCustomerId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
-        furamaService.addCustomer(customer);
+        boolean flag = furamaService.addCustomer(customer);
+        if (flag){
+            request.setAttribute("message", "insert success");
+        }else {
+            request.setAttribute("message", "insert error");
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
         try {
             dispatcher.forward(request, response);

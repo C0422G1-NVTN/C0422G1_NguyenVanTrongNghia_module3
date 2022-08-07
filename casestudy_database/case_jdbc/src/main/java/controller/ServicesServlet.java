@@ -48,8 +48,8 @@ public class ServicesServlet extends HttpServlet {
             case "createContract":
                 showNewContractForm(request, response);
                 break;
-            case "editService":
-                showEditServiceForm(request, response);
+            case "showEditFacility":
+                showEditFacilityForm(request, response);
                 break;
             case "showEditCustomer":
                 showEditCustomerForm(request, response);
@@ -194,8 +194,11 @@ public class ServicesServlet extends HttpServlet {
         }
     }
 
-    private void showEditServiceForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("service/edit.jsp");
+    private void showEditFacilityForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Facility existingFacility = facilityService.findById(id);
+        request.setAttribute("facility",existingFacility);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/edit.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

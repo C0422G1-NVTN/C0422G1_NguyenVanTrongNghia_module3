@@ -92,7 +92,7 @@
                     <th scope="col">Facility Free</th>
                     <th scope="col" colspan="2">Actions</th>
                 </tr>
-                <c:forEach var="fac" items="${facilityList}">
+                <c:forEach var="fac" items="${listFacility}">
                     <tr>
                         <td>${fac.id}</td>
                         <td>${fac.name}</td>
@@ -107,7 +107,7 @@
                         <td>${fac.numberFloor}</td>
                         <td>${fac.facilityFree}</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-modal" onclick="location.href='/furuma?action=edit_facility&id=${fac.id}'">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit-modal" onclick="location.href='/furama?action=showEditFacility&id=${fac.id}'">
                                 Edit
                             </button>
                         </td>

@@ -40,7 +40,7 @@ public class FacilityRepository implements IFacilityRepository {
                 int id = resultSet.getInt("ma_dich_vu");
                 String name = resultSet.getString("ten_dich_vu");
                 int area = resultSet.getInt("dien_tich");
-                double deposit = resultSet.getInt("chi_phi_thue");
+                double deposit = resultSet.getDouble("chi_phi_thue");
                 int maxPeople = resultSet.getInt("so_nguoi_toi_da");
                 int rentType = resultSet.getInt("ma_kieu_thue");
                 int facilityType = resultSet.getInt("ma_loai_dich_vu");
@@ -48,7 +48,7 @@ public class FacilityRepository implements IFacilityRepository {
                 String description = resultSet.getString("mo_ta_tien_nghi_khac");
                 double poolArea = resultSet.getInt("dien_tich_ho_boi");
                 int numberFloor = resultSet.getInt("so_tang");
-                String facilityFree = resultSet.getString("dien_tich_mien_phi_di_kem");
+                String facilityFree = resultSet.getString("dich_vu_mien_phi_di_kem");
                 facility = new Facility(id, name, area, deposit, maxPeople, rentType, facilityType, standardRoom, description, poolArea, numberFloor, facilityFree);
                 facilityList.add(facility);
             }

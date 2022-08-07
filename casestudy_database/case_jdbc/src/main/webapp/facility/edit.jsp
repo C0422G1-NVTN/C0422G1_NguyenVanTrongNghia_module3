@@ -74,7 +74,7 @@
 
 <h1>New Form Service</h1>
 <h2>
-    <a href="/ServicesServlet?action=listfurama">List All Users</a>
+    <a href="/ServicesServlet?action=listFacility">List All Facility</a>
 </h2>
 
 <div>

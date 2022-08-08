@@ -5,7 +5,7 @@ import model.Facility.Facility;
 import java.util.List;
 
 public interface IFacilityRepository {
-    boolean CreateFacility(Facility facility);
+    boolean createFacility(Facility facility);
     boolean editFacility(Facility facility,int id);
     boolean deleteFacility(int id);
     List<Facility> findAllFacility();

@@ -10,12 +10,12 @@
 <html>
 <head>
     <title>Edit Customer</title>
-    <link rel="stylesheet" href="../common/css/bootstrap.min.css/">
+    <link rel="stylesheet" href="../common/css/bootstrap.min.css">
     <script src="../common/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-
+<%@ include file="../layout/header.jsp" %>
 
 <form action="/furama?action=editCustomer" method="post">
     <div class="modal-dialog">
@@ -121,6 +121,8 @@
     </div>
 </c:if>
 
+<%--footer--%>
+<%@ include file="../layout/footer.jsp" %>
 <script src="https://kit.fontawesome.com/8a4e8d8d08.js" crossorigin="anonymous"></script>
 
 

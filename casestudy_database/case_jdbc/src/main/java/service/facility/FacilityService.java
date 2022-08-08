@@ -8,8 +8,8 @@ import java.util.List;
 public class FacilityService implements IFacilityService{
     FacilityRepository facilityRepository = new FacilityRepository();
     @Override
-    public boolean CreateFacility(Facility facility) {
-        return facilityRepository.CreateFacility(facility);
+    public boolean createFacility(Facility facility) {
+        return facilityRepository.createFacility(facility);
     }
 
     @Override

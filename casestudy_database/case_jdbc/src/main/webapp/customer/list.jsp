@@ -8,12 +8,15 @@
     <script src="../common/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%--header--%>
+<%--navbar--%>
 
-
+<%@ include file="../layout/header.jsp" %>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <a href="/furama?action=createCustomer" class="btn btn-success">Add new customer</a>
+            <input type="search" placeholder="Search" name="searchNamePhoneTypeCustomer">
         </div>
     </div>
 </div>
@@ -56,7 +59,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" onclick="removeCustomer(${customer.id})">
+                                    data-bs-target="#exampleModal" onclick="removeCustomer('${customer.id}')">
                                 Delete
                             </button>
                         </td>
@@ -64,7 +67,8 @@
                 </c:forEach>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <form action="/furama?action=deleteCustomer" method="post">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -73,7 +77,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <input type="text" id="deleteId" name="id" class="form-control-plaintext">
+                            <input type="text" id="deleteId" readonly name="id" class="form-control-plaintext">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -83,8 +87,16 @@
                 </div>
             </form>
         </div>
+        <script>
+            function removeCustomer(id) {
+                document.getElementById("deleteId").value = id;
+            }
+        </script>
+
+        <%--        footer--%>
+        <%@ include file="../layout/footer.jsp" %>
         <script src="/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-        </div>
     </div>
+</div>
 </body>
 </html>

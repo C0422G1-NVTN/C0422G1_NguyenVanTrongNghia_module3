@@ -19,6 +19,8 @@ public class ServicesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -172,7 +174,7 @@ public class ServicesServlet extends HttpServlet {
 
     private void showListFacility(HttpServletRequest request, HttpServletResponse response) {
         List<Facility> facilityList = facilityService.findAllFacility();
-        request.setAttribute("listFacility",facilityList);
+        request.setAttribute("listFacility", facilityList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/list.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -197,7 +199,7 @@ public class ServicesServlet extends HttpServlet {
     private void showEditFacilityForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Facility existingFacility = facilityService.findById(id);
-        request.setAttribute("facility",existingFacility);
+        request.setAttribute("facility", existingFacility);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("facility/edit.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -221,6 +223,8 @@ public class ServicesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -230,26 +234,76 @@ public class ServicesServlet extends HttpServlet {
                 addNewCustomer(request, response);
                 break;
             case "editCustomer":
-                editCustomer(request,response);
+                editCustomer(request, response);
                 break;
             case "deleteCustomer":
-                deleteCustomer(request,response);
+                deleteCustomer(request, response);
+                break;
+            case "createFacility":
+                addNewFacility(request, response);
+                break;
+            case "deleteFacility":
+                deleteFacility(request,response);
         }
     }
+
+    private void deleteFacility(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        facilityService.deleteFacility(id);
+        List<Facility> facilityList = facilityService.findAllFacility();
+        request.setAttribute("facilityList", facilityList);
+        showListFacility(request, response);
+    }
+
+    private void addNewFacility(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int area = Integer.parseInt(request.getParameter("area"));
+        double deposit = Double.parseDouble(request.getParameter("deposit"));
+        int maxPeople = Integer.parseInt(request.getParameter("maxPeople"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rentTypeId"));
+        int facilityType = Integer.parseInt(request.getParameter("facilityType"));
+        String standardRoom = request.getParameter("standardRoom");
+        String description = request.getParameter("description_other_convenience");
+        String poolArea1 = request.getParameter("pool_area");
+        double poolArea;
+        if (poolArea1.equals("")){
+            poolArea = 0;
+        }else {
+            poolArea = Double.parseDouble(request.getParameter(poolArea1));
+        }
+        String numberFloor1 = request.getParameter("numberFloor");
+        int numberFloor;
+        if (numberFloor1 == null){
+            numberFloor = 0;
+        }else {
+            numberFloor = Integer.parseInt(request.getParameter(numberFloor1));
+        }
+        String facilityFree = request.getParameter("facility_free");
+        Facility facility = new Facility(id,name,area,deposit,maxPeople,rentTypeId,facilityType,standardRoom,description,poolArea,numberFloor,facilityFree);
+        boolean flag = facilityService.createFacility(facility);
+        if (flag) {
+            request.setAttribute("message", "insert success");
+        } else {
+            request.setAttribute("message", "insert error");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/add.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         furamaService.deleteCustomerById(id);
         List<Customer> customerList = furamaService.displayAllCustomer();
         request.setAttribute("customer", customerList);
-        RequestDispatcher rq = request.getRequestDispatcher("customer/list.jsp");
-        try {
-            rq.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        showListCustomer(request, response);
     }
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -259,15 +313,15 @@ public class ServicesServlet extends HttpServlet {
         String dateOfBirth = request.getParameter("dateOfBirth");
         int gender = Integer.parseInt(request.getParameter("gender"));
         String idCard = request.getParameter("idCard");
-        String phone = request.getParameter("phone");
+        String phoneNumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        Customer customer = new Customer(id, typeCustomerId, name, dateOfBirth, gender, idCard, phone, email, address);
+        Customer customer = new Customer(id, typeCustomerId, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         boolean flag = furamaService.editCustomerById(id, customer);
 
-        if (flag){
+        if (flag) {
             request.setAttribute("message", "edit success");
-        }else {
+        } else {
             request.setAttribute("message", "edit error");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
@@ -281,7 +335,7 @@ public class ServicesServlet extends HttpServlet {
     }
 
     private void addNewCustomer(HttpServletRequest request, HttpServletResponse response) {
-       int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         int typeCustomerId = Integer.parseInt(request.getParameter("typeCustomerId"));
         String name = request.getParameter("name");
         String dateOfBirth = request.getParameter("dateOfBirth");
@@ -290,11 +344,11 @@ public class ServicesServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        Customer customer = new Customer(id,typeCustomerId,name,dateOfBirth,gender,idCard,phoneNumber,email,address);
+        Customer customer = new Customer(id, typeCustomerId, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         boolean flag = furamaService.addCustomer(customer);
-        if (flag){
+        if (flag) {
             request.setAttribute("message", "insert success");
-        }else {
+        } else {
             request.setAttribute("message", "insert error");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");

@@ -13,11 +13,11 @@ import java.util.List;
 
 public class FuramaRepository implements IFuramaRepository {
     private static final String SELECT_ALL_CUSTOMER_SP = "call find_all_customer();";
-    private final String SELECT_CUSTOMER_BY_ID = "CALL find_customer_by_id(?);";
+    private static final String SELECT_CUSTOMER_BY_ID = "CALL find_customer_by_id(?);";
     private static final String CREATE_NEW_CUSTOMER_SP = "call insert_new_customer(?,?,?,?,?,?,?,?,?);";
     private static final String EDIT_CUSTOMER_SP = "call edit_customer(?,?,?,?,?,?,?,?,?);";
     private static final String DELETE_CUSTOMER_SP = "call delete_customer(?);";
-
+    private static final String SEARCH_CUSTOMER_BY_KEY_SEARCH = "CALL find_facility_by_key_search(?);";
     @Override
     public List<Customer> displayAllCustomer() {
         List<Customer> customerList = new ArrayList<>();
@@ -98,6 +98,7 @@ public class FuramaRepository implements IFuramaRepository {
         int check;
         try {
             CallableStatement callableStatement = connection.prepareCall(DELETE_CUSTOMER_SP);
+            callableStatement.setInt(1,id);
             check = callableStatement.executeUpdate();
             return check > 0 ? true : false;
         } catch (SQLException e) {
@@ -128,5 +129,33 @@ public class FuramaRepository implements IFuramaRepository {
         }
         return false;
     }
+
+    @Override
+    public List<Customer> searchCustomerByKeySearch(String keySearch) {
+       List<Customer> customer = new ArrayList<>();
+        Connection connection = DatabaseConnect.getConnectDB();
+        try {
+            CallableStatement callableStatement = connection.prepareCall(SEARCH_CUSTOMER_BY_KEY_SEARCH);
+            callableStatement.setString(1,keySearch);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("ma_khach_hang");
+                int typeId = resultSet.getInt("ma_loai_khach");
+                String name = resultSet.getString("ho_ten");
+                String date = resultSet.getString("ngay_sinh");
+                int gender = resultSet.getInt("gioi_tinh");
+                String idCard = resultSet.getString("so_cmnd");
+                String phoneNumber = resultSet.getString("so_dien_thoai");
+                String email = resultSet.getString("email");
+                String address = resultSet.getString("dia_chi");
+//                customer = new Customer(id, typeId, name, date, gender, idCard, phoneNumber, email, address);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
+
     }
+}
 

@@ -10,4 +10,5 @@ public interface IFuramaRepository {
     boolean addCustomer(Customer customer);
     boolean deleteCustomerById(int id);
     boolean editCustomerById(int id,Customer customer);
+    List<Customer> searchCustomerByKeySearch(String keySearch);
 }

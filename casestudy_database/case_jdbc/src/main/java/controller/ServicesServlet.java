@@ -254,7 +254,7 @@ public class ServicesServlet extends HttpServlet {
                 deleteFacility(request, response);
                 break;
             case "editFacility":
-                editFacility(request,response);
+                editFacility(request, response);
         }
     }
 
@@ -271,20 +271,20 @@ public class ServicesServlet extends HttpServlet {
         String description = request.getParameter("description_other_convenience");
         String poolArea1 = request.getParameter("pool_area");
         double poolArea;
-        if (poolArea1.equals("")){
+        if (poolArea1.equals("")) {
             poolArea = 0;
-        }else {
+        } else {
             poolArea = Double.parseDouble(poolArea1);
         }
         String numberFloor1 = request.getParameter("number_of_floors");
         int numberFloor;
-        if (numberFloor1.equals("")){
+        if (numberFloor1.equals("")) {
             numberFloor = 0;
-        }else {
+        } else {
             numberFloor = Integer.parseInt(numberFloor1);
         }
         String free = request.getParameter("facility_free");
-        facility = new Facility(id, name, area, deposit, maxPeople, typeId, facilityType, standardRoom, description, poolArea, numberFloor,free);
+        facility = new Facility(id, name, area, deposit, maxPeople, typeId, facilityType, standardRoom, description, poolArea, numberFloor, free);
         facilityService.editFacility(facility, id);
         List<Facility> facilityList = facilityService.findAllFacility();
         request.setAttribute("listFacility", facilityList);
@@ -308,10 +308,15 @@ public class ServicesServlet extends HttpServlet {
 
     private void addNewFacility(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
+        String name = request.getParameter("name"); // regex xong
         int area = Integer.parseInt(request.getParameter("area"));
         double deposit = Double.parseDouble(request.getParameter("deposit"));
-        int maxPeople = Integer.parseInt(request.getParameter("maxPeople"));
+        int maxPeople; //regex xong
+        try {
+            maxPeople = Integer.parseInt(request.getParameter("maxPeople"));
+        } catch (Exception e) {
+            maxPeople = 0;
+        }
         int rentTypeId = Integer.parseInt(request.getParameter("rentTypeId"));
         int facilityType = Integer.parseInt(request.getParameter("facilityType"));
         String standardRoom = request.getParameter("standard_room");
@@ -323,22 +328,30 @@ public class ServicesServlet extends HttpServlet {
         } else {
             poolArea = Double.parseDouble(poolArea1);
         }
-        String numberFloor1 = request.getParameter("number_floor");
         int numberFloor;
-        if (numberFloor1.equals("")) {
+        try {
+            numberFloor = Integer.parseInt(request.getParameter("number_floor"));// regex xong
+        } catch (Exception e) {
             numberFloor = 0;
-        } else {
-            numberFloor = Integer.parseInt(numberFloor1);
         }
+
+
         String facilityFree = request.getParameter("facility_free");
         Facility facility = new Facility(id, name, area, deposit, maxPeople, rentTypeId, facilityType, standardRoom, description, poolArea, numberFloor, facilityFree);
-         = facilityService.createFacility(facility);
-        if () {
-            request.setAttribute("message", "insert success");
+        Map<String, String> mapError = facilityService.createFacility(facility);
+        RequestDispatcher dispatcher;
+        if (mapError.size() > 0) {
+            for (Map.Entry<String, String> entry : mapError.entrySet()) {
+                request.setAttribute(entry.getKey(), entry.getValue());
+            }
+            request.setAttribute("message", mapError);
+            dispatcher = request.getRequestDispatcher("facility/add.jsp");
         } else {
-            request.setAttribute("message", "insert error");
+            request.setAttribute("success", "create  success");
+            request.setAttribute("customer", facilityService.findAllFacility());
+            dispatcher = request.getRequestDispatcher("facility/add.jsp");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/add.jsp");
+
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -398,13 +411,15 @@ public class ServicesServlet extends HttpServlet {
         Customer customer = new Customer(id, typeCustomerId, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         Map<String, String> mapError = furamaService.addCustomer(customer);
         RequestDispatcher dispatcher;
-        if (mapError.size()>0) {
-            request.setAttribute("message", mapError);
+        if (mapError.size() > 0) {
+            for (Map.Entry<String, String> entry : mapError.entrySet()) {
+                request.setAttribute(entry.getKey(), entry.getValue());
+            }
             dispatcher = request.getRequestDispatcher("customer/create.jsp");
         } else {
             request.setAttribute("success", "create  success");
             request.setAttribute("customer", furamaService.displayAllCustomer());
-            dispatcher = request.getRequestDispatcher("customer/create.jsp");
+            dispatcher = request.getRequestDispatcher("customer/list.jsp");
         }
         try {
             dispatcher.forward(request, response);

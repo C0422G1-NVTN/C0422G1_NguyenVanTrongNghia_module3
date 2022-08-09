@@ -39,19 +39,21 @@
             <div class="mb-3 row">
                 <label for="static-name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="static-name" name="name">
-                    <c:if test="${message != null}">
-                        <p class="text-danger" >${message.get("name")}</p>
-                    </c:if>
+                    <input type="text" required class="form-control" id="static-name" name="name">
+<%--                    <c:if test="${message != null}">--%>
+<%--                        <p class="text-danger" >${message.get("name")}</p>--%>
+<%--                    </c:if>--%>
+                    <p class="text-danger" >${name}</p>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="staticDate" class="col-sm-4 col-form-label">Date of birth</label>
                 <div class="col-sm-8">
-                    <input type="date" class="form-control" id="staticDate" name="dateOfBirth">
-                    <c:if test="${message != null}">
-                        <p class="text-danger" >${message.get("dateOfBirth")}</p>
-                    </c:if>
+                    <input type="date" required class="form-control" id="staticDate" name="dateOfBirth">
+<%--                    <c:if test="${message != null}">--%>
+<%--                        <p class="text-danger" >${message.get("dateOfBirth")}</p>--%>
+<%--                    </c:if>--%>
+                    <p class="text-danger" >${dateOfBirth}</p>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -74,34 +76,37 @@
             <div class="mb-3 row">
                 <label for="id-card" class="col-sm-4 col-form-label">id Card</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="id-card" name="idCard">
-                    <c:if test="${message != null}">
-                        <p class="text-danger">${message.get("idCard")}</p>
-                    </c:if>
+                    <input type="text" required class="form-control" id="id-card" name="idCard">
+<%--                    <c:if test="${message != null}">--%>
+<%--                        <p class="text-danger">${message.get("idCard")}</p>--%>
+<%--                    </c:if>--%>
+                    <p class="text-danger" >${idCard}</p>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="phone" class="col-sm-4 col-form-label">Phone number</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="phone" name="phoneNumber">
-                    <c:if test="${message != null}">
-                        <p class="text-danger" >${message.get("phoneNumber")}</p>
-                    </c:if>
+                    <input type="text" required class="form-control" id="phone" name="phoneNumber">
+<%--                    <c:if test="${message != null}">--%>
+<%--                        <p class="text-danger" >${message.get("phoneNumber")}</p>--%>
+<%--                    </c:if>--%>
+                    <p class="text-danger" >${phoneNumber}</p>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="email" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="email" name="email">
-                    <c:if test="${message != null}">
-                        <p class="text-danger" >${message.get("email")}</p>
-                    </c:if>
+                    <input type="text" required class="form-control" id="email" name="email">
+<%--                    <c:if test="${message != null}">--%>
+<%--                        <p class="text-danger" >${message.get("email")}</p>--%>
+<%--                    </c:if>--%>
+                    <p class="text-danger" >${email}</p>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="address" class="col-sm-4 col-form-label">Address</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="address" name="address">
+                    <input type="text" required class="form-control" id="address" name="address">
                 </div>
             </div>
             <div>

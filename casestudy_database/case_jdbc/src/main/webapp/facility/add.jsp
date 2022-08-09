@@ -48,6 +48,9 @@
                         <tr>
                             <td><label>Name:</label>
                                 <input class="form-control" type="text" name="name" size="45"/>
+                                <c:if test="${message != null}">
+                                    <p class="text-danger" >${message.get("name")}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
@@ -66,6 +69,9 @@
 
                             <td><label>Max People:</label>
                                 <input class="form-control" type="text" name="maxPeople" size="15"/>
+                                <c:if test="${message != null}">
+                                    <p class="text-danger" >${message.get("maxPeople")}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
@@ -100,6 +106,9 @@
 
                             <td><label>Số tầng:</label>
                                 <input class="form-control" type="text" name="number_floor" size="15"/>
+                                <c:if test="${message != null}">
+                                    <p class="text-danger" >${message.get("number_floor")}</p>
+                                </c:if>
                             </td>
                         </tr>
 

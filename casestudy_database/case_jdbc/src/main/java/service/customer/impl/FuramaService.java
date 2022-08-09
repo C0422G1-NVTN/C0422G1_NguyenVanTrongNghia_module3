@@ -62,12 +62,12 @@ public class FuramaService implements IFuramaService {
         } else {
             mapErrors.put("email", "Please input email!");
         }
-        LocalDate birthDay;
+        LocalDate dateOfBirth;
         if (!customer.getDateOfBirth().isEmpty()) {
             try {
-                birthDay = LocalDate.parse(customer.getDateOfBirth());
+                dateOfBirth = LocalDate.parse(customer.getDateOfBirth());
             } catch (Exception e) {
-                mapErrors.put("dateOfBirth", "Please input date format");
+                mapErrors.put("dateOfBirth", "Please input right format");
             }
         } else {
             mapErrors.put("dateOfBirth", "Please input date!");

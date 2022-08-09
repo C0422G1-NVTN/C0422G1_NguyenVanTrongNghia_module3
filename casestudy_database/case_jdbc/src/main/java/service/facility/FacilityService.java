@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class FacilityService implements IFacilityService{
     private final String REGEX_NAME_FACILITY = "([A-Z][A-Za-z0-9]+\\s?)+";
+
     FacilityRepository facilityRepository = new FacilityRepository();
     @Override
     public Map<String,String> createFacility(Facility facility) {
@@ -24,7 +25,21 @@ public class FacilityService implements IFacilityService{
             mapErrors.put("name", "Please input name!");
         }
 
+        if (facility.getMaxPeople()>0){
+            mapErrors.put("maxPeople","Please input right format!");
+        }else {
+            mapErrors.put("maxPeople","Please input maxPeople!");
+        }
 
+        if (facility.getNumberFloor()>0){
+            mapErrors.put("number_floor","Please input right format!");
+        }else {
+            mapErrors.put("number_floor","Please input maxPeople!");
+        }
+
+        if (mapErrors.size() == 0) {
+            this.facilityRepository.createFacility(facility);
+        }
         return mapErrors;
     }
 

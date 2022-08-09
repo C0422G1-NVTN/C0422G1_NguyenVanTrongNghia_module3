@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="/furama?action=createCustomer" class="btn btn-success">Add new customer</a>
+            <a href="/furama?action=showCreateCustomer" class="btn btn-success">Add new customer</a>
             <input type="search" placeholder="Search" name="searchNamePhoneTypeCustomer">
         </div>
     </div>
@@ -78,6 +78,7 @@
                         </div>
                         <div class="modal-body">
                             <input type="text" id="deleteId" readonly name="id" class="form-control-plaintext">
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

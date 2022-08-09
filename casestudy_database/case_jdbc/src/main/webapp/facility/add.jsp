@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 bg-success border-success d-flex justify-content-center align-content-center">
-                <form method="post">
+                <form method="post" action="/furama?action=create-Facility">
                     <table class="form-control-lg">
                         <tr>
 

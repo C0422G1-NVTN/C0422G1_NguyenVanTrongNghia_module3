@@ -1,15 +1,31 @@
 package service.facility;
 
 import model.Facility.Facility;
+import model.Facility.RentType;
+import model.Facility.ServiceType;
 import repository.facility.impl.FacilityRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FacilityService implements IFacilityService{
+    private final String REGEX_NAME_FACILITY = "([A-Z][A-Za-z0-9]+\\s?)+";
     FacilityRepository facilityRepository = new FacilityRepository();
     @Override
-    public boolean createFacility(Facility facility) {
-        return facilityRepository.createFacility(facility);
+    public Map<String,String> createFacility(Facility facility) {
+        Map<String, String> mapErrors = new HashMap<>();
+
+        if (!facility.getName().isEmpty()) {
+            if (!facility.getName().matches(REGEX_NAME_FACILITY)) {
+                mapErrors.put("name", "Please input right format!");
+            }
+        } else {
+            mapErrors.put("name", "Please input name!");
+        }
+
+
+        return mapErrors;
     }
 
     @Override
@@ -35,5 +51,15 @@ public class FacilityService implements IFacilityService{
     @Override
     public Facility findById(int id_search) {
         return facilityRepository.findById(id_search);
+    }
+
+    @Override
+    public List<ServiceType> getServiceTypeList() {
+        return facilityRepository.getServiceTypeList();
+    }
+
+    @Override
+    public List<RentType> getRentalTypeList() {
+        return facilityRepository.getRentalTypeList();
     }
 }

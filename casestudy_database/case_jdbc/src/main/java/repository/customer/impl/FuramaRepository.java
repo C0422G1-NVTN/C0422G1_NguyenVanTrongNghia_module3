@@ -70,7 +70,7 @@ public class FuramaRepository implements IFuramaRepository {
     }
 
     @Override
-    public boolean addCustomer(Customer customer) {
+    public void addCustomer(Customer customer) {
         Connection connection = DatabaseConnect.getConnectDB();
         int check;
         try {
@@ -85,11 +85,9 @@ public class FuramaRepository implements IFuramaRepository {
             callableStatement.setString(8, customer.getEmail());
             callableStatement.setString(9, customer.getAddress());
             check = callableStatement.executeUpdate();
-            return check > 0 ? true : false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     @Override

@@ -35,23 +35,11 @@ public class ServicesServlet extends HttpServlet {
             case "listCustomer":
                 showListCustomer(request, response);
                 break;
-            case "listEmployee":
-                showListEmployee(request, response);
-                break;
-            case "listContract":
-                showListContract(request, response);
-                break;
             case "createFacility":
                 showNewFacilityForm(request, response);
                 break;
             case "showCreateCustomer":
                 showNewCustomerForm(request, response);
-                break;
-            case "createEmployee":
-                showNewEmployeeForm(request, response);
-                break;
-            case "createContract":
-                showNewContractForm(request, response);
                 break;
             case "showEditFacility":
                 showEditFacilityForm(request, response);
@@ -59,58 +47,8 @@ public class ServicesServlet extends HttpServlet {
             case "showEditCustomer":
                 showEditCustomerForm(request, response);
                 break;
-            case "editEmployee":
-                showEditEmployeeForm(request, response);
-                break;
-            case "editContract":
-                showEditContractForm(request, response);
-                break;
             default:
                 showHome(request, response);
-        }
-    }
-
-    private void showEditContractForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("contract/edit.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showNewContractForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("contract/create.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showListContract(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("contract/list.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showEditEmployeeForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/edit.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -129,16 +67,6 @@ public class ServicesServlet extends HttpServlet {
     }
 
 
-    private void showNewEmployeeForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/create.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void showNewCustomerForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher requestDispatcher;
@@ -152,16 +80,6 @@ public class ServicesServlet extends HttpServlet {
         }
     }
 
-    private void showListEmployee(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/list.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void showListCustomer(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customerList = furamaService.displayAllCustomer();
